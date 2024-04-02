@@ -1,4 +1,5 @@
 package com.example;
+import java.util.*;
 
 import lombok.extern.slf4j.Slf4j;
 
@@ -25,12 +26,26 @@ public class ControladorREST {
         individuo.setApellido("TheKing");
         individuo.setTelefono("1234567890");
         individuo.setCorreo("groverthebest@gmail.com");
-        individuo.setEdad("44");
+        individuo.setEdad("44 años");
+
+        Individuo individuo2 = new Individuo();
+        individuo2.setNombre("Lola");
+        individuo2.setApellido("Queen");
+        individuo2.setTelefono("6665556660");
+        individuo2.setCorreo("lamalvada@gmail.com");
+        individuo2.setEdad("22 años");
+
+        // List<Individuo> individuos = new ArrayList();
+        // individuos.add(individuo);
+        // individuos.add(individuo2);
+
+        List<Individuo> individuos = Arrays.asList(individuo, individuo2);
 
         log.info("Estoy ejecutando el controlador MVC");
         model.addAttribute("hola", hola);
         model.addAttribute("hola2", hola2);
         model.addAttribute("individuo", individuo);
+        model.addAttribute("individuos", individuos);
         return "indice";
     }
 }

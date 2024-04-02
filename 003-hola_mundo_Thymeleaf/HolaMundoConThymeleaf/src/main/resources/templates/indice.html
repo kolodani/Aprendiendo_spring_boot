@@ -11,16 +11,28 @@
         <h1>Inicio</h1>
         <p th:text="${hola}"></p>
         <p th:text="${hola2}"></p>
-        <br/>
-        Nombre: <span th:text="${individuo.nombre}">Muestra Nombre</span>
         <br />
-        Apellido: <span th:text="${individuo.apellido}">Muestra Apellido</span>
-        <br />
-        Edad: <span th:text="${individuo.edad}">Muestra Edad</span>
-        <br />
-        Correo: <span th:text="${individuo.correo}">Muestra Correo</span>
-        <br />
-        Telefono: <span th:text="${individuo.telefono}">Muestra Telefono</span>
+        <div th:if="${individuos != null and !individuos.empty}">
+            <table border="2">
+                <tr>
+                    <th>Nombre</th>
+                    <th>Apellido</th>
+                    <th>Edad</th>
+                    <th>Correo</th>
+                    <th>Telefono</th>
+                </tr>
+                <tr th:each="individuo : ${individuos}">
+                    <td th:text="${individuo.nombre}">Muestra Nombre</td>
+                    <td th:text="${individuo.apellido}">Muestra Apellido</td>
+                    <td th:text="${individuo.edad}">Muestra Edad</td>
+                    <td th:text="${individuo.correo}">Muestra Correo</td>
+                    <td th:text="${individuo.telefono}">Muestra Telefono</td>
+                </tr>
+            </table>
+        </div>
+        <div th:if="${individuos == null or individuos.empty}">
+            La lista no tiene informacion
+        </div>
     </body>
 
 </html>
